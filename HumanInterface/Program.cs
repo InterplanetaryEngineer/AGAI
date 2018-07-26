@@ -62,6 +62,9 @@ namespace HumanInterface
                 try {
                     int x = int.Parse(GetLine()) - 1;
                     int y = 9 - int.Parse(GetLine());
+                    if (x == -1 && y == 9) {
+                        return boardShape.Passed();
+                    }
                     if (boardShape.Valid(y, x) && game.IsLegal(boardShape.At(y, x), GameBase.Color.White)) {
                         game.Play(boardShape.At(y, x), GameBase.Color.White);
                         return boardShape.At(y, x);
